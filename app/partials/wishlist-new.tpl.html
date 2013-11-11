@@ -1,0 +1,6 @@
+<div ng-controller="wlNewCtrl as wlNew">
+    <input ng-model="wlNew.wishList.name" placeholder="name" required/> <br>
+    <textarea rows="4" cols="50" ng-model="wlNew.wishList.description"></textarea><br>
+    <input type="checkbox" ng-model="wlNew.wishList.anonymous" /> Allow anonymous access<br>
+    <button ng-click="wlNew.newWishlist()">Add new Wishlist</button>
+</div>
