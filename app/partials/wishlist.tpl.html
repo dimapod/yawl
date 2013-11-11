@@ -1,4 +1,5 @@
 <div ng-controller="wishlistCtrl as wl">
+<h2>Wishes</h2>
 
     Name: {{ wl.wishlist.name }} <br>
     Description: {{ wl.wishlist.description }} <br>
@@ -8,16 +9,18 @@
         <li ng-repeat="item in wl.wishlist.items">
             {{ item.name }} - {{ item.description }} - {{ item.price }} -
             <input type="checkbox" ng-model="item.reserved">
-            <button ng-click="wl.removeItem(item)">x</button>
+            <button ng-click="wl.removeItem(item)" ng-show="wl.userId == user.id">x</button>
         </li>
     </ul>
     <br>
 
-    Add new item:<br>
-    <input ng-model="wl.newItem.name" placeholder="name">
-    <input ng-model="wl.newItem.description" placeholder="description">
-    <input ng-model="wl.newItem.price" placeholder="price">
-    <br>
-    <button ng-click="wl.addNewItem(newItem)">Add item</button>
+    <div ng-show="wl.userId == user.id">
+        Add new item:<br>
+        <input ng-model="wl.newItem.name" placeholder="name">
+        <input ng-model="wl.newItem.description" placeholder="description">
+        <input ng-model="wl.newItem.price" placeholder="price">
+        <br>
+        <button ng-click="wl.addNewItem(newItem)">Add item</button>
+    </div>
 
 </div>

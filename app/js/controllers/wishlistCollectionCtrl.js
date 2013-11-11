@@ -1,9 +1,18 @@
 'use strict';
 
 angular.module('yawl.controllers').
-    controller('wlCollectionCtrl', function (wishlistCollection) {
-        this.list = wishlistCollection.collection();
+    controller('wlCollectionCtrl', function ($scope, wishlistCollection) {
+
+        this.getWishlistCollection = function () {
+            this.list = wishlistCollection.collection();
+        };
+
+        var self = this;
+        $scope.$on('angularFireAuth:login', function() {
+            self.getWishlistCollection();
+        });
+
         this.removeWishlist = function(wishlistId) {
-            wishlistCollection.remove(wishlistId)
-        }
+            wishlistCollection.remove(wishlistId);
+        };
     });

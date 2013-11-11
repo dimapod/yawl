@@ -4,11 +4,16 @@ angular.module('yawl.services.wishlist', ['yawl.services.firebaseRefs'])
     .factory('wishlistCollection', ['angularFireCollection', 'FireRef', function (angularFireCollection, FireRef) {
 
         function collection(cb) {
-            return angularFireCollection(FireRef.wishlists(), cb);
+            var ref = FireRef.wishlists();
+            if (ref) {
+                return angularFireCollection(ref, cb);
+            } else {
+                return null;
+            }
         }
 
-        function find(wishlistId) {
-            return FireRef.wishlists().child('/' + wishlistId);
+        function find(userId, wishlistId) {
+            return FireRef.wishlists(userId).child('/' + wishlistId);
         }
 
         function create(wishlist) {

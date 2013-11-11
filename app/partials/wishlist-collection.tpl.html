@@ -1,8 +1,9 @@
 <div ng-controller="wlCollectionCtrl as wlCollection">
+<h2>Wishlists</h2>
 
-    <ul>
+    <ul ng-init="wlCollection.getWishlistCollection()">
         <li ng-repeat="wl in wlCollection.list">
-            <a href="#/wl/{{ wl.$id }}">{{ wl.name }} - {{ wl.description }}</a>
+            <a href="#/wl/{{ user.id }}/{{ wl.$id }}">{{ wl.name }} - {{ wl.description }}</a>
             <button ng-click="wlCollection.removeWishlist(wl.$id)">x</button>
         </li>
     </ul>

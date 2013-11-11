@@ -4,7 +4,9 @@ angular.module('yawl.controllers').
     controller('wishlistCtrl', function ($scope, $routeParams, wishlistCollection, angularFire) {
         $scope.wishlist = {}
         $scope.newItem = {};
-        angularFire(wishlistCollection.find($routeParams["wishlistId"]), $scope, 'wishlist');
+
+        $scope.userId = $routeParams.userId;
+        angularFire(wishlistCollection.find($scope.userId, $routeParams.wishlistId), $scope, 'wishlist');
 
         $scope.addNewItem = function (newItem) {
             if (!$scope.wishlist.items)

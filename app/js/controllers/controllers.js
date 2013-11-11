@@ -2,5 +2,6 @@
 
 angular.module('yawl.controllers', [
         'yawl.services.firebaseRefs',
-        'yawl.services.wishlist'
+        'yawl.services.wishlist',
+        'yawl.services.login'
     ]);
