@@ -1,8 +1,15 @@
-<h2>LOGIN</h2>
-<div ng-controller="loginCtrl as login">
-    <div ng-hide="user">
-        <button ng-click="login.loginWith('twitter')">Login with Twitter</button>
-        <button ng-click="login.loginWith('facebook')">Login with Facebook</button>
+<div ng-show="signin != 'NA'">
+
+    <h2>LOGIN</h2>
+    <div ng-controller="loginCtrl as login">
+        <div ng-hide="user">
+            <button ng-click="login.loginWith('twitter')">Login with Twitter</button>
+            <button ng-click="login.loginWith('facebook')">Login with Facebook</button>
+        </div>
+        <button ng-click="login.logout()" ng-show="user">Logout</button>
     </div>
-    <button ng-click="login.logout()" ng-show="user">Logout</button>
+</div>
+
+<div ng-show="signin == 'NA'">
+    Initializing...
 </div>
