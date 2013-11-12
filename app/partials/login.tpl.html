@@ -1,15 +1,24 @@
-<div ng-show="signin != 'NA'">
+<div id="login">
+    <div class="login-content">
 
-    <h2>LOGIN</h2>
-    <div ng-controller="loginCtrl as login">
-        <div ng-hide="user">
-            <button ng-click="login.loginWith('twitter')">Login with Twitter</button>
-            <button ng-click="login.loginWith('facebook')">Login with Facebook</button>
+        <h2>LOGIN</h2>
+
+        <div>
+            <div ng-controller="loginCtrl as login" ng-show="signin != 'NA'">
+                <div ng-hide="user">
+                    <button class="pure-button" ng-click="login.loginWith('twitter')">Login with
+                        Twitter
+                    </button>
+                    <button class="pure-button" ng-click="login.loginWith('facebook')">Login with
+                        Facebook
+                    </button>
+                </div>
+                <button ng-click="login.logout()" ng-show="user">Logout</button>
+            </div>
+            <div ng-show="signin == 'NA'">
+                <img src="img/loading.gif">
+            </div>
         </div>
-        <button ng-click="login.logout()" ng-show="user">Logout</button>
-    </div>
-</div>
 
-<div ng-show="signin == 'NA'">
-    Initializing...
+    </div>
 </div>
