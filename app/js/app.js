@@ -25,7 +25,9 @@ angular.module('yawl', [
 
             $rootScope.$watch(function() { return $location.path(); }, function(newValue, oldValue) {
                 if (!$rootScope.user) {
-                    $rootScope.redirect = oldValue;
+                    if (oldValue != "/login") {
+                        $rootScope.redirect = oldValue;
+                    }
                     $location.url('/login');
                 }
             });
