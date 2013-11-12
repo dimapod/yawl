@@ -18,7 +18,26 @@ angular.module('yawl', [
     .constant('FBURL', 'https://yawl.firebaseio.com')
 
     // authentication
-    .run(['angularFireAuth', 'FBURL', '$rootScope', 'FireRef',
-        function (angularFireAuth, FBURL, $rootScope, FireRef) {
-            angularFireAuth.initialize(new Firebase(FBURL), {scope: $rootScope, name: 'user'});
+    .run(['angularFireAuth', 'FBURL', '$rootScope', 'FireRef', '$location',
+        function (angularFireAuth, FBURL, $rootScope, FireRef, $location) {
+            $rootScope.signin = "NA";
+            $rootScope.redirect = "/wl-collection";
+
+            angularFireAuth.initialize(FireRef.root(), {scope: $rootScope, name: 'user',
+                callback: function (err, user) {
+                    console.log("Login state changed", err, user);
+                    if (err) {
+                        $location.path("/login");
+                        return;
+                    }
+
+                    if (!user) {
+                        if ($location.path() != "/login") {
+                            $rootScope.redirect = $location.path();
+                        }
+                        //console.log("Go to login");
+                        $location.path("/login");
+                    }
+                }
+            });
         }]);

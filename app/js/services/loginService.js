@@ -7,7 +7,6 @@ angular.module('yawl.services.login', [])
                 login: function (provider, redirect, callback) {
                     var p = angularFireAuth.login(provider);
                     p.then(function (user) {
-                        console.log(provider, user)
                         if (redirect) {
                             $location.path(redirect);
                         }

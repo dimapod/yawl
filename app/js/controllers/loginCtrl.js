@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('yawl.controllers').
-    controller('loginCtrl', function (loginService) {
+    controller('loginCtrl', function (loginService, $rootScope) {
         this.loginWith = function (provider) {
-            loginService.login(provider, '/wl-collection');
+            loginService.login(provider, $rootScope.redirect);
         };
 
         this.logout = function (provider) {
