@@ -3,16 +3,29 @@
 
     Name: {{ wl.wishlist.name }} <br>
     Description: {{ wl.wishlist.description }} <br>
+    <hr>
 
-    Items: <br>
-    <ul>
-        <li ng-repeat="item in wl.wishlist.items">
-            <a ng-href="{{item.url}}" target="_blank">{{ item.name }}</a> - {{ item.description }} - {{ item.price }} -
-            <input type="checkbox" ng-model="item.reserved">
-            <button ng-click="wl.removeItem(item)" ng-show="wl.userId == user.id">x</button>
-        </li>
-    </ul>
-    <br>
+    <div class="wish" ng-repeat="item in wl.wishlist.items">
+        <div class="date" ng-hide="true">
+            <p>26 <span>Apr</span></p>
+        </div>
+
+        <div class="wish-content">
+            <h2><a href="">{{ item.name }}</a></h2>
+            <p>{{ item.description }}</p>
+            <h4>{{ item.price }}€</h4>
+            <div class="wish-actions">
+                <!--<input type="checkbox" ng-model="item.reserved">-->
+                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(item)">
+                    <span ng-hide="item.reserved">Reserve</span><span ng-show="item.reserved">Release</span>
+                </button>
+                <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(item)" ng-show="wl.userId == user.id">
+                    Remove
+                </button>
+            </div>
+        </div>
+        <hr>
+    </div>
 
     <div ng-show="wl.userId == user.id">
         Add new item:<br>

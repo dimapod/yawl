@@ -1,7 +1,3 @@
-html, body {
-    height: 100%;
-}
-
 body {
     color: #777;
 }
@@ -41,10 +37,98 @@ body {
 }
 
 .content {
+    margin: 70px 17px;
+
     .header .pure-menu {
         padding: 0.5em;
+        opacity: 0.95;
+
+        .pure-menu-open {
+            background: none;
+        }
+
+        li ul {
+            display: none;
+            top: 36px;
+        }
+
+        li:hover ul {
+            display: block;
+            position: absolute;
+        }
+
+        li:hover>a {
+            background: #E5E5E5;
+        }
+
+        .profile {
+            float: right;
+            margin-right: 15px;
+
+            ul {
+                left: auto;
+                right: 0;
+            }
+        }
     }
 
-    margin: 70px 17px;
+    .footer {
+        background: #111;
+        color: #666;
+        text-align: center;
+        padding: 1em;
+        font-size: 80%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.9;
+    }
+
 }
+
+
+// PURE STYLING
+
+.pure-button-xsmall {
+    font-size: 70%;
+}
+
+.pure-button-small {
+    font-size: 85%;
+}
+
+.pure-button-large {
+    font-size: 110%;
+}
+
+.pure-button-xlarge {
+    font-size: 125%;
+}
+
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pure-button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.pure-button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.pure-button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.pure-button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
+
 

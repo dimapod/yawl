@@ -20,5 +20,9 @@ angular.module('yawl.controllers').
             $scope.wishlist.items.splice(index, 1);
         };
 
+        $scope.reserveItem = function (item) {
+            item.reserved = !item.reserved;
+        };
+
         return $scope;
     });

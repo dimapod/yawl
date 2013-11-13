@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('yawl.services.login', [])
-    .factory('loginService', ['angularFireAuth', '$location', '$rootScope',
-        function (angularFireAuth, $location, $rootScope) {
+    .factory('loginService', ['angularFireAuth', '$location',
+        function (angularFireAuth, $location) {
             return {
                 login: function (provider, redirect, callback) {
                     var p = angularFireAuth.login(provider);
