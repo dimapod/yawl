@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>YAWL</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-    <!--<link rel="stylesheet" href="css/app.css"/>-->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet/less" type="text/css" href="css/style.less"/>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
@@ -18,7 +18,7 @@
 <body>
 
 <div class="content">
-    <div class="header" ng-show="user" ng-controller="headerCtrl as header">
+    <div id="header" ng-show="user" ng-controller="headerCtrl as header">
         <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
             <a class="pure-menu-heading" href=""><b>YAWL</b></a>
 
@@ -29,7 +29,7 @@
 
             <ul class="profile">
                 <li class="pure-menu-open">
-                    <a href="#"><span>{{ user.displayName }}</span></a>
+                    <a href="#"><span><i class="fa fa-user fa-border"></i> {{ user.displayName }}</span></a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-heading">Provider: {{ user.provider }}</li>
                         <li class="pure-menu-separator"></li>
@@ -40,9 +40,9 @@
         </div>
     </div>
 
-    <div ng-view></div>
+    <div id="content" ng-view></div>
 
-    <div class="footer" ng-show="user">
+    <div id="footer" ng-show="user">
         © 2013 YAWL All Rights Reserved
     </div>
 </div>

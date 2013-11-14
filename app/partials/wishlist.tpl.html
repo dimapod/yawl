@@ -1,30 +1,38 @@
 <div ng-controller="wishlistCtrl as wl">
-<h2>Wishes</h2>
+    <div class="wishes-header">
+        <h2>Wishes</h2>
 
-    Name: {{ wl.wishlist.name }} <br>
-    Description: {{ wl.wishlist.description }} <br>
+        Name: {{ wl.wishlist.name }} <br>
+        Description: {{ wl.wishlist.description }} <br>
+    </div>
     <hr>
 
-    <div class="wish" ng-repeat="item in wl.wishlist.items">
-        <div class="date" ng-hide="true">
-            <p>26 <span>Apr</span></p>
-        </div>
+    <div class="wishes-content">
+        <div class="wish" ng-repeat="item in wl.wishlist.items">
+            <div class="lock" ng-click="wl.reserveItem(item)">
+                <i class="fa fa-lock" ng-class="{'fa-unlock-alt': !item.reserved}"></i>
+            </div>
 
-        <div class="wish-content">
-            <h2><a href="">{{ item.name }}</a></h2>
-            <p>{{ item.description }}</p>
-            <h4>{{ item.price }}€</h4>
-            <div class="wish-actions">
-                <!--<input type="checkbox" ng-model="item.reserved">-->
-                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(item)">
-                    <span ng-hide="item.reserved">Reserve</span><span ng-show="item.reserved">Release</span>
-                </button>
-                <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(item)" ng-show="wl.userId == user.id">
-                    Remove
-                </button>
+            <div class="wish-content">
+                <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
+
+                <p>{{ item.description }}</p>
+
+
+                <h4>{{ item.price }}€</h4>
+
+                <div class="wish-actions">
+                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(item)">
+                        <span ng-hide="item.reserved"><i class="fa fa-star"></i> Reserve</span>
+                        <span ng-show="item.reserved"><i class="fa fa-star-o"></i> Release</span>
+                    </button>
+                    <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(item)"
+                            ng-show="wl.userId == user.id">
+                        <i class="fa fa-trash-o"></i> Remove
+                    </button>
+                </div>
             </div>
         </div>
-        <hr>
     </div>
 
     <div ng-show="wl.userId == user.id">

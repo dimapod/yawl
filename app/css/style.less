@@ -39,7 +39,7 @@ body {
 .content {
     margin: 70px 17px;
 
-    .header .pure-menu {
+    #header .pure-menu {
         padding: 0.5em;
         opacity: 0.95;
 
@@ -72,7 +72,7 @@ body {
         }
     }
 
-    .footer {
+    #footer {
         background: #111;
         color: #666;
         text-align: center;
@@ -85,6 +85,48 @@ body {
         opacity: 0.9;
     }
 
+    #content {
+        .wish {
+            margin-bottom: 15px;
+            overflow: hidden;
+            .lock {
+                border: 1px solid grey;
+                border-radius: 6px;
+                height: 58px;
+                width: 54px;
+                text-align: center;
+                font-size: 3em;
+                padding-top: 8px;
+                float: left;
+                margin-right: 15px;
+                color: whitesmoke;
+                cursor: pointer;
+
+
+                background: #1e69de; /* Old browsers */
+                background: -moz-linear-gradient(top,  #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e69de), color-stop(34%,#3690f0), color-stop(71%,#54a3ee), color-stop(100%,#6db3f2)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e69de', endColorstr='#6db3f2',GradientType=0 ); /* IE6-9 */
+
+            }
+        }
+
+        .wish-content {
+            width: 700px;
+            float: left;
+
+            .wish-actions {
+                border-radius: 5px;
+                padding: 8px;
+                background: #F6F3F3;
+            }
+
+        }
+    }
 }
 
 

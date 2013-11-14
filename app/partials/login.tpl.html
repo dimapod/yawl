@@ -1,16 +1,16 @@
 <div id="login">
     <div class="login-content">
 
-        <h2>SING IN</h2>
+        <h2>SIGN IN</h2>
 
         <div>
             <div ng-controller="loginCtrl as login" ng-show="signin != 'NA'">
                 <div ng-hide="user">
-                    <button class="pure-button" ng-click="login.loginWith('twitter')">Login with
-                        Twitter
+                    <button class="pure-button" ng-click="login.loginWith('twitter')">
+                        <i class="fa fa-twitter fa-fw"></i> Login with Twitter
                     </button>
-                    <button class="pure-button" ng-click="login.loginWith('facebook')">Login with
-                        Facebook
+                    <button class="pure-button" ng-click="login.loginWith('facebook')">
+                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
                     </button>
                 </div>
                 <button class="pure-button" ng-click="login.logout()" ng-show="user">Logout</button>
