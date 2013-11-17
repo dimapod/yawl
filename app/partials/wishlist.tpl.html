@@ -8,9 +8,9 @@
     <hr>
 
     <div class="wishes-content">
-        <div class="wish" ng-repeat="item in wl.wishlist.items">
-            <div class="lock" ng-click="wl.reserveItem(item)">
-                <i class="fa fa-lock" ng-class="{'fa-unlock-alt': !item.reserved}"></i>
+        <div class="wish" ng-repeat="(itemId, item) in wl.wishlist.items">
+            <div class="lock">
+                <i class="fa" ng-class="{'fa-lock': item.reserved, 'fa-unlock-alt': !item.reserved}"></i>
             </div>
 
             <div class="wish-content">
@@ -22,12 +22,14 @@
                 <h4>{{ item.price }}€</h4>
 
                 <div class="wish-actions">
-                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(item)">
-                        <span ng-hide="item.reserved"><i class="fa fa-star"></i> Reserve</span>
-                        <span ng-show="item.reserved"><i class="fa fa-star-o"></i> Release</span>
+                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
+                        <i class="fa fa-star"></i> Reserve
                     </button>
-                    <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(item)"
-                            ng-show="wl.userId == user.id">
+                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
+                        <i class="fa fa-star-o"></i> Release
+                    </button>
+                    <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(itemId)"
+                            ng-show="wl.ownerId == user.id">
                         <i class="fa fa-trash-o"></i> Remove
                     </button>
                 </div>
@@ -35,7 +37,7 @@
         </div>
     </div>
 
-    <div ng-show="wl.userId == user.id">
+    <div ng-show="wl.ownerId == user.id">
         Add new item:<br>
         <input ng-model="wl.newItem.name" placeholder="name">
         <input ng-model="wl.newItem.description" placeholder="description"><br>

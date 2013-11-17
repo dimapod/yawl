@@ -8,20 +8,18 @@ angular.module('yawl.services.firebaseRefs', ['firebase'])
         }
 
         function wishlists(userId) {
-            if (!userId) {
-                if ($rootScope.user) {
-                    userId = $rootScope.user.id;
-                } else {
-                    return null;
-                }
-            }
-            console.log("REF", FBURL + '/users/' + userId + '/wishlists')
+            userId = userId || $rootScope.user.id;
             return new Firebase(FBURL + '/users/' + userId + '/wishlists');
+        }
+
+        function items(wishlistId, userId) {
+            return wishlists(userId).child(wishlistId).child("items");
         }
 
         // Public
         return {
             root: root,
-            wishlists: wishlists
+            wishlists: wishlists,
+            items: items
         }
     }]);

@@ -11,7 +11,7 @@ angular.module('yawl', [
         $routeProvider.when('/login', {templateUrl: 'partials/login.tpl.html'});
         $routeProvider.when('/wl-collection', {templateUrl: 'partials/wishlist-collection.tpl.html'});
         $routeProvider.when('/wl-new', {templateUrl: 'partials/wishlist-new.tpl.html'});
-        $routeProvider.when('/wl/:userId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html'});
+        $routeProvider.when('/wl/:ownerId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html'});
         $routeProvider.otherwise({redirectTo: '/wl-collection'});
     }])
     // Firebase URL
