@@ -13,6 +13,9 @@ angular.module('yawl.controllers').
         });
 
         this.removeWishlist = function(wishlistId) {
-            wishlistCollection.remove(wishlistId);
+            this.list.remove(wishlistId);
+
+            // The same
+            //wishlistCollection.remove(wishlistId);
         };
     });
