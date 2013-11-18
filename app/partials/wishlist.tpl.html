@@ -6,7 +6,7 @@
     </div>
 
 
-    <div class="items">
+    <div class="items" ng-init="showAdd=false">
 
         <table>
             <tbody>
@@ -34,48 +34,36 @@
                     </button>
                 </td>
             </tr>
+
+            <tr class="add" ng-show="showAdd" ng-init="newItem={}">
+                <td class="info">
+                    <div class="lock">
+                        <i class="fa fa-unlock-alt"></i>
+                    </div>
+                </td>
+                <td class="content">
+                    <span>
+                        <input ng-model="newItem.name" placeholder="Title">
+                        <input ng-model="newItem.url" placeholder="Url">
+                        <input type="number" ng-model="newItem.price" placeholder="Price">
+                    </span>
+                    <textarea rows="3" ng-model="newItem.description" placeholder="Description"></textarea><br>
+                    <div></div>
+                </td>
+                <td class="actions">
+                    <button class="pure-button pure-button-small" ng-click="wl.addNewItem(newItem); showAdd=false;">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                    <button class="pure-button pure-button-small" ng-click="showAdd=false">
+                        <i class="fa fa-ban"></i> Cancel
+                    </button>
+                </td>
+            </tr>
+
             </tbody>
         </table>
-    </div>
 
-
-<!--
-    <div class="wishes-content">
-        <div class="wish" ng-repeat="(itemId, item) in wl.wishlist.items">
-            <div class="lock">
-                <i class="fa" ng-class="{'fa-lock': item.reserved, 'fa-unlock-alt': !item.reserved}"></i>
-            </div>
-
-            <div class="wish-content">
-                <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
-                <p>{{ item.description }}</p>
-                <h4>{{ item.price }}€</h4>
-            </div>
-
-            <div class="wish-actions">
-                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
-                    <i class="fa fa-star"></i> Reserve
-                </button>
-                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
-                    <i class="fa fa-star-o"></i> Release
-                </button>
-                <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(itemId)"
-                        ng-show="wl.ownerId == user.id">
-                    <i class="fa fa-trash-o"></i> Remove
-                </button>
-            </div>
-        </div>
-    </div>
--->
-
-    <div ng-show="wl.ownerId == user.id">
-        Add new item:<br>
-        <input ng-model="wl.newItem.name" placeholder="name">
-        <input ng-model="wl.newItem.description" placeholder="description"><br>
-        <input ng-model="wl.newItem.url" placeholder="url">
-        <input type="number" ng-model="wl.newItem.price" placeholder="price">
-        <br>
-        <button ng-click="wl.addNewItem(newItem)">Add item</button>
+        <button class="add" ng-click="showAdd = !showAdd"><i class="fa" ng-class="{'fa-plus': !showAdd, 'fa-minus': showAdd}"></i></button>
     </div>
 
 </div>

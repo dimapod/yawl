@@ -165,6 +165,29 @@ body {
                     background: #b7b7b7;
                     background: -webkit-gradient(linear, 0 0, 100% 0, from(whitesmoke), to(whitesmoke), color-stop(50%, #b7b7b7));
                 }
+
+            }
+            .add {
+                span {
+                    margin-bottom: 4px;
+                }
+                input {
+                    height: 20px;
+                    margin-bottom: 4px;
+                    width: 300px;
+                }
+                input:last-child {
+                    width: 86px;
+                }
+
+                input, textarea {
+                    border-radius: 3px;
+                    border: @border;
+                }
+                textarea {
+                    width: 700px;
+                    max-width: 700px;
+                }
             }
             .actions {
                 button {
@@ -173,6 +196,22 @@ body {
                 }
                 padding: 0;
                 vertical-align: top;
+            }
+
+            button {
+                &.add {
+                    width: 100%;
+                    font-size: 3em;
+                    background-color: whitesmoke;
+                    padding: 0;
+                    border: 1px solid whitesmoke;
+
+                    &:hover {
+                        background-color: whitesmoke;
+                        border: @border;
+                        background-image: none;
+                    }
+                }
             }
         }
 

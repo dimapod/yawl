@@ -3,7 +3,6 @@
 angular.module('yawl.controllers').
     controller('wishlistCtrl', function ($scope, $routeParams, angularFire, wishlistCollection, items) {
         $scope.wishlist = {};
-        $scope.newItem = {};
 
         $scope.ownerId = $routeParams["ownerId"];
         var wishlistId = $routeParams["wishlistId"];
