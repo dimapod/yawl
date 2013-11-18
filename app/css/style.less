@@ -1,5 +1,10 @@
+@content-wight: 900px;
+@background: #efefef url('../img/body.jpg') repeat top left;
+@border: 1px solid #b7b7b7;
+
 body {
     color: #777;
+    background: @background;
 }
 
 #login {
@@ -8,7 +13,7 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: grey;
+    background: @background;
 
     .login-content {
         border-radius: 15px;
@@ -23,6 +28,7 @@ body {
         left: 0;
         bottom: 0;
         right: 0;
+        border: @border;
 
         div {
             margin-top: 12%;
@@ -32,42 +38,50 @@ body {
             width: 80%;
             margin-bottom: 2px;
         }
-
     }
 }
 
 .content {
-    margin: 70px 17px;
 
-    #header .pure-menu {
-        padding: 0.5em;
-        opacity: 0.95;
+    #header {
+        background-color: whitesmoke;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        border-bottom: @border;;
 
-        .pure-menu-open {
-            background: none;
-        }
+        .pure-menu {
+            padding: .5em 10px .5em 10px;
+            opacity: 0.95;
+            width: @content-wight;
+            margin: auto;
 
-        li ul {
-            display: none;
-            top: 36px;
-        }
+            .pure-menu-open {
+                background: none;
+            }
 
-        li:hover ul {
-            display: block;
-            position: absolute;
-        }
+            li ul {
+                display: none;
+                top: 36px;
+            }
 
-        li:hover>a {
-            background: #E5E5E5;
-        }
+            li:hover ul {
+                display: block;
+                position: absolute;
+            }
 
-        .profile {
-            float: right;
-            margin-right: 15px;
+            li:hover>a {
+                background: #E5E5E5;
+            }
 
-            ul {
-                left: auto;
-                right: 0;
+            .profile {
+                float: right;
+                margin-right: 15px;
+
+                ul {
+                    left: auto;
+                    right: 0;
+                }
             }
         }
     }
@@ -86,46 +100,124 @@ body {
     }
 
     #content {
-        .wish {
-            margin-bottom: 15px;
-            overflow: hidden;
-            .lock {
-                border: 1px solid grey;
-                border-radius: 6px;
-                height: 58px;
-                width: 54px;
-                text-align: center;
-                font-size: 3em;
-                padding-top: 8px;
-                float: left;
-                margin-right: 15px;
-                color: whitesmoke;
+        border-radius: 4px;
+        background-color: whitesmoke;
+        width: @content-wight;
+        margin: 70px auto 70px auto;
+        padding: 10px;
+        border: @border;
 
-                background: #1e69de; /* Old browsers */
-                background: -moz-linear-gradient(top,  #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e69de), color-stop(34%,#3690f0), color-stop(71%,#54a3ee), color-stop(100%,#6db3f2)); /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* Opera 11.10+ */
-                background: -ms-linear-gradient(top,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* IE10+ */
-                background: linear-gradient(to bottom,  #1e69de 0%,#3690f0 34%,#54a3ee 71%,#6db3f2 100%); /* W3C */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e69de', endColorstr='#6db3f2',GradientType=0 ); /* IE6-9 */
+        .wishes-header {
+            h2 {
+                margin-top: 0;
+                color: black;
+            }
+
+            div {
+                width: 100%;
+                height: 1px;
+                margin: auto;
+
+                background: #b7b7b7;
+                background: -webkit-gradient(linear, 0 0, 100% 0, from(whitesmoke), to(whitesmoke), color-stop(50%, #b7b7b7));
+            }
+
+            margin-bottom: 20px;
+        }
+
+        .items {
+            .info {
+                vertical-align: top;
+                width: 70px;
+                .lock {
+                    border: @border;
+                    border-radius: 5px;
+                    height: 58px;
+                    width: 54px;
+                    text-align: center;
+                    font-size: 3em;
+                    padding-top: 8px;
+                    float: left;
+                    margin-right: 15px;
+                    background-color: #E6E6E6;
+                }
+            }
+            .content {
+                h2 {
+                    margin-top: 0;
+
+                    a {
+                        color: black;
+                        text-transform: uppercase;
+                        text-shadow: 0 2px 0px #fff;
+                        text-decoration: none;
+                    }
+                }
+                p {
+                    min-height: 10px;
+                }
+                padding-bottom: 20px;
+                div {
+                    width: 300px;
+                    height: 1px;
+                    margin: auto;
+
+                    background: #b7b7b7;
+                    background: -webkit-gradient(linear, 0 0, 100% 0, from(whitesmoke), to(whitesmoke), color-stop(50%, #b7b7b7));
+                }
+            }
+            .actions {
+                button {
+                    width: 112px;
+                    margin-bottom: 4px;
+                }
+                padding: 0;
+                vertical-align: top;
             }
         }
 
-        .wish-content {
-            width: 700px;
-            float: left;
-
-            .wish-actions {
-                border-radius: 5px;
-                padding: 8px;
-                background: #F6F3F3;
-            }
-
-        }
+//        .wish {
+//            margin-bottom: 15px;
+//            overflow: hidden;
+//            .lock {
+//                border: 1px solid grey;
+//                border-radius: 9px;
+//                height: 58px;
+//                width: 54px;
+//                text-align: center;
+//                font-size: 3em;
+//                padding-top: 8px;
+//                float: left;
+//                margin-right: 15px;
+//                color: whitesmoke;
+//
+//                background: #1e69de; /* Old browsers */
+//                background: -moz-linear-gradient(top, #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* FF3.6+ */
+//                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e69de), color-stop(34%, #3690f0), color-stop(71%, #54a3ee), color-stop(100%, #6db3f2)); /* Chrome,Safari4+ */
+//                background: -webkit-linear-gradient(top, #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* Chrome10+,Safari5.1+ */
+//                background: -o-linear-gradient(top, #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* Opera 11.10+ */
+//                background: -ms-linear-gradient(top, #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* IE10+ */
+//                background: linear-gradient(to bottom, #1e69de 0%, #3690f0 34%, #54a3ee 71%, #6db3f2 100%); /* W3C */
+//                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e69de', endColorstr='#6db3f2', GradientType=0); /* IE6-9 */
+//            }
+//        }
+//
+//        .wish-content {
+//            float: left;
+//            width: 700px;
+//
+//            h2 {
+//                margin-top: 0;
+//            }
+//
+//            .wish-actions {
+//                padding: 8px;
+//                background: #F4F4F4;
+//            }
+//
+//        }
     }
 }
-
 
 // PURE STYLING
 

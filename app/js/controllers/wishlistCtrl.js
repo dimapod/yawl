@@ -11,10 +11,10 @@ angular.module('yawl.controllers').
         angularFire(wishlistCollection.find($scope.ownerId, wishlistId), $scope, 'wishlist');
 
         $scope.addNewItem = function (item) {
-            $scope.wishlist.items[new Date().getTime()] = angular.extend({reserved: ""}, item);
+            //$scope.wishlist.items[new Date().getTime()] = angular.extend({reserved: ""}, item);
 
             // Or
-            //items.create(wishlistId, item);
+            items.create(wishlistId, item);
         };
 
         $scope.removeItem = function(itemId) {

@@ -1,12 +1,45 @@
 <div ng-controller="wishlistCtrl as wl">
     <div class="wishes-header">
-        <h2>Wishes</h2>
-
-        Name: {{ wl.wishlist.name }} <br>
-        Description: {{ wl.wishlist.description }} <br>
+        <h2>{{ wl.wishlist.name }}</h2>
+        <p>{{ wl.wishlist.description }}<p>
+        <div class="sep"></div>
     </div>
-    <hr>
 
+
+    <div class="items">
+
+        <table>
+            <tbody>
+            <tr ng-repeat="(itemId, item) in wl.wishlist.items">
+                <td class="info">
+                    <div class="lock">
+                        <i class="fa" ng-class="{'fa-lock': item.reserved, 'fa-unlock-alt': !item.reserved}"></i>
+                    </div>
+                </td>
+                <td class="content">
+                    <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
+                    <p>{{ item.description }}</p>
+                    <div></div>
+                </td>
+                <td class="actions">
+                    <button class="pure-button pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
+                        <i class="fa fa-star"></i> Reserve
+                    </button>
+                    <button class="pure-button pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
+                        <i class="fa fa-star-o"></i> Release
+                    </button>
+                    <button class="pure-button pure-button-small" ng-click="wl.removeItem(itemId)"
+                            ng-show="wl.ownerId == user.id">
+                        <i class="fa fa-trash-o"></i> Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+<!--
     <div class="wishes-content">
         <div class="wish" ng-repeat="(itemId, item) in wl.wishlist.items">
             <div class="lock">
@@ -15,27 +48,25 @@
 
             <div class="wish-content">
                 <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
-
                 <p>{{ item.description }}</p>
-
-
                 <h4>{{ item.price }}€</h4>
+            </div>
 
-                <div class="wish-actions">
-                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
-                        <i class="fa fa-star"></i> Reserve
-                    </button>
-                    <button class="pure-button pure-button-success pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
-                        <i class="fa fa-star-o"></i> Release
-                    </button>
-                    <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(itemId)"
-                            ng-show="wl.ownerId == user.id">
-                        <i class="fa fa-trash-o"></i> Remove
-                    </button>
-                </div>
+            <div class="wish-actions">
+                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
+                    <i class="fa fa-star"></i> Reserve
+                </button>
+                <button class="pure-button pure-button-success pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
+                    <i class="fa fa-star-o"></i> Release
+                </button>
+                <button class="pure-button pure-button-warning pure-button-small" ng-click="wl.removeItem(itemId)"
+                        ng-show="wl.ownerId == user.id">
+                    <i class="fa fa-trash-o"></i> Remove
+                </button>
             </div>
         </div>
     </div>
+-->
 
     <div ng-show="wl.ownerId == user.id">
         Add new item:<br>
