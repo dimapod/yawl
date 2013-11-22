@@ -17,12 +17,9 @@ angular.module('yawl.services.wishlist', ['yawl.services.firebaseRefs'])
         }
 
         function create(wishlist) {
-            return FireRef.wishlists().push({
-                name: wishlist.name,
-                description: wishlist.description,
-                anonymous: wishlist.anonymous,
-                creationDate: new Date()
-            }).name();
+            return FireRef.wishlists().push(
+                angular.extend({ creationDate: (new Date()).getTime() }, wishlist)
+            ).name();
         }
 
         function remove(wishlistId) {

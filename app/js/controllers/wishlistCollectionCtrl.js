@@ -18,4 +18,8 @@ angular.module('yawl.controllers').
             // The same
             //wishlistCollection.remove(wishlistId);
         };
+
+        this.newWishlist = function(wishlist) {
+            wishlistCollection.create(wishlist);
+        };
     });

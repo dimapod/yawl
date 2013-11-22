@@ -1,12 +1,18 @@
-<div ng-controller="wlCollectionCtrl as wlCollection">
-<h2>Wishlists</h2>
+<div ng-controller="wlCollectionCtrl as wlCollection" ng-init="showForm = false">
+    <h2>My wishlists</h2>
 
     <ul ng-init="wlCollection.getWishlistCollection()">
         <li ng-repeat="wl in wlCollection.list">
-            <a href="#/wl/{{ user.id }}/{{ wl.$id }}">{{ wl.name }} - {{ wl.description }}</a>
+            <a href="#/wl/{{ user.id }}/{{ wl.$id }}">{{ wl.name }} - {{ wl.description }} - {{ wl.creationDate | date }}</a>
             <button ng-click="wlCollection.removeWishlist(wl.$id)">x</button>
         </li>
     </ul>
 
-    <a class="pure-button" href="#/wl-new">WL ADD</a>
+    <div ng-show="showForm" ng-init="wishlist={}">
+        <input ng-model="wishlist.name" placeholder="name" required/> <br>
+        <textarea rows="4" cols="50" ng-model="wishlist.description"></textarea><br>
+        <button ng-click="wlCollection.newWishlist(wishlist)">Add new Wishlist</button>
+    </div>
+
+    <a class="pure-button" ng-click="showForm = !showForm">WL ADD</a>
 </div>
