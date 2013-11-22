@@ -34,7 +34,6 @@ angular.module('yawl', [
 
             angularFireAuth.initialize(FireRef.root(), {scope: $rootScope, name: 'user',
                 callback: function (err, user) {
-                    console.log("Login state changed", err, user);
                     if (err || !user) {
                         $rootScope.signin = err ? "LOGIN_ERR" : "LOGGED_OUT";
                         $location.path("/login");

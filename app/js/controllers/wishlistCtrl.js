@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('yawl.controllers').
-    controller('wishlistCtrl', function ($scope, $routeParams, angularFire, wishlistCollection, items) {
+    controller('wishlistCtrl', function ($scope, $routeParams, angularFire, wishlistCollection, items, $location) {
         $scope.wishlist = {};
+        $scope.$locationUrl = $location.absUrl();
 
         $scope.ownerId = $routeParams["ownerId"];
         var wishlistId = $routeParams["wishlistId"];
@@ -34,7 +35,7 @@ angular.module('yawl.controllers').
         };
 
         $scope.isReservedByMe = function (item) {
-            return !item.reserved || item.reserved == $scope.user.id;
+            return item.reserved == $scope.user.id;
         };
 
         return $scope;

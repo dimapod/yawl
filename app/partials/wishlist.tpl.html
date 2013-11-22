@@ -1,11 +1,8 @@
-<div ng-controller="wishlistCtrl as wl">
+<div ng-controller="wishlistCtrl as wl" xmlns="http://www.w3.org/1999/html">
     <div class="wishes-header">
         <h2>{{ wl.wishlist.name }}</h2>
-
-        <p>{{ wl.wishlist.description }}
-
-        <p>
-
+        <p>{{ wl.wishlist.description }}</p>
+        <span ng-show="wl.ownerId == user.id">Share link : <input disabled ng-model="wl.$locationUrl"/></span>
         <div class="sep"></div>
     </div>
 
@@ -30,7 +27,7 @@
                         </button>
                         <button class="pure-button pure-button-small" ng-click="wl.releaseItem(itemId)"
                                 ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
-                            <i class="fa fa-star-o"></i> Release
+                            <i class="fa fa-unlock"></i> Release
                         </button>
                         <button class="pure-button pure-button-small" ng-click="wl.removeItem(itemId)"
                                 ng-show="wl.ownerId == user.id">
@@ -41,18 +38,21 @@
 
                 <div class="middle">
                     <div class="column-in">
-                        <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
-
+                        <h2>
+                            <a ng-href="{{ item.url }}" target="_blank">{{ item.name }}
+                                <i class="fa fa-star" ng-show="isReservedByMe(item)"></i>
+                            </a>
+                            <span>{{ item.price }}€</span>
+                        </h2>
                         <p>{{ item.description }}</p>
-
-                        <div></div>
+                        <div class="sep"></div>
                     </div>
                 </div>
                 <div class="cleaner">&nbsp;</div>
             </div>
         </div>
 
-        <div class="main1 add" ng-show="showAdd" ng-init="newItem={}">
+        <div class="main1 add" ng-show="showForm" ng-init="newItem={}">
             <div class="main2">
 
                 <div class="left">
@@ -65,10 +65,10 @@
 
                 <div class="right">
                     <div class="column-in">
-                        <button class="pure-button pure-button-small" ng-click="wl.addNewItem(newItem); showAdd=false;">
+                        <button class="pure-button pure-button-small" ng-click="wl.addNewItem(newItem); showForm=false;">
                             <i class="fa fa-plus"></i> Add
                         </button>
-                        <button class="pure-button pure-button-small" ng-click="showAdd=false">
+                        <button class="pure-button pure-button-small" ng-click="showForm=false">
                             <i class="fa fa-ban"></i> Cancel
                         </button>
                     </div>
@@ -90,8 +90,8 @@
             </div>
         </div>
 
-        <button class="add" ng-click="showAdd = !showAdd">
-            <i class="fa" ng-class="{'fa-plus': !showAdd, 'fa-minus': showAdd}"></i>
+        <button class="add" ng-click="showForm = !showForm" ng-show="wl.ownerId == user.id">
+            <i class="fa" ng-class="{'fa-plus': !showForm, 'fa-minus': showForm}"></i>
         </button>
 
     </div>
