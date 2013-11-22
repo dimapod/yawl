@@ -1,69 +1,99 @@
 <div ng-controller="wishlistCtrl as wl">
     <div class="wishes-header">
         <h2>{{ wl.wishlist.name }}</h2>
-        <p>{{ wl.wishlist.description }}<p>
+
+        <p>{{ wl.wishlist.description }}
+
+        <p>
+
         <div class="sep"></div>
     </div>
 
-
     <div class="items" ng-init="showAdd=false">
 
-        <table>
-            <tbody>
-            <tr ng-repeat="(itemId, item) in wl.wishlist.items">
-                <td class="info">
-                    <div class="lock">
-                        <i class="fa" ng-class="{'fa-lock': item.reserved, 'fa-unlock-alt': !item.reserved}"></i>
+        <div class="main1" ng-repeat="(itemId, item) in wl.wishlist.items">
+            <div class="main2">
+
+                <div class="left">
+                    <div class="column-in">
+                        <div class="lock">
+                            <i class="fa" ng-class="{'fa-lock': item.reserved, 'fa-unlock-alt': !item.reserved}"></i>
+                        </div>
                     </div>
-                </td>
-                <td class="content">
-                    <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
-                    <p>{{ item.description }}</p>
-                    <div></div>
-                </td>
-                <td class="actions">
-                    <button class="pure-button pure-button-small" ng-click="wl.reserveItem(itemId)" ng-hide="item.reserved">
-                        <i class="fa fa-star"></i> Reserve
-                    </button>
-                    <button class="pure-button pure-button-small" ng-click="wl.releaseItem(itemId)" ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
-                        <i class="fa fa-star-o"></i> Release
-                    </button>
-                    <button class="pure-button pure-button-small" ng-click="wl.removeItem(itemId)"
-                            ng-show="wl.ownerId == user.id">
-                        <i class="fa fa-trash-o"></i> Remove
-                    </button>
-                </td>
-            </tr>
+                </div>
 
-            <tr class="add" ng-show="showAdd" ng-init="newItem={}">
-                <td class="info">
-                    <div class="lock">
-                        <i class="fa fa-unlock-alt"></i>
+                <div class="right">
+                    <div class="column-in">
+                        <button class="pure-button pure-button-small" ng-click="wl.reserveItem(itemId)"
+                                ng-hide="item.reserved">
+                            <i class="fa fa-star"></i> Reserve
+                        </button>
+                        <button class="pure-button pure-button-small" ng-click="wl.releaseItem(itemId)"
+                                ng-show="item.reserved" ng-disabled="!isReservedByMe(item)">
+                            <i class="fa fa-star-o"></i> Release
+                        </button>
+                        <button class="pure-button pure-button-small" ng-click="wl.removeItem(itemId)"
+                                ng-show="wl.ownerId == user.id">
+                            <i class="fa fa-trash-o"></i> Remove
+                        </button>
                     </div>
-                </td>
-                <td class="content">
-                    <span>
-                        <input ng-model="newItem.name" placeholder="Title">
-                        <input ng-model="newItem.url" placeholder="Url">
-                        <input type="number" ng-model="newItem.price" placeholder="Price">
-                    </span>
-                    <textarea rows="3" ng-model="newItem.description" placeholder="Description"></textarea><br>
-                    <div></div>
-                </td>
-                <td class="actions">
-                    <button class="pure-button pure-button-small" ng-click="wl.addNewItem(newItem); showAdd=false;">
-                        <i class="fa fa-plus"></i> Add
-                    </button>
-                    <button class="pure-button pure-button-small" ng-click="showAdd=false">
-                        <i class="fa fa-ban"></i> Cancel
-                    </button>
-                </td>
-            </tr>
+                </div>
 
-            </tbody>
-        </table>
+                <div class="middle">
+                    <div class="column-in">
+                        <h2><a ng-href="{{ item.url }}" target="_blank">{{ item.name }}</a></h2>
 
-        <button class="add" ng-click="showAdd = !showAdd"><i class="fa" ng-class="{'fa-plus': !showAdd, 'fa-minus': showAdd}"></i></button>
+                        <p>{{ item.description }}</p>
+
+                        <div></div>
+                    </div>
+                </div>
+                <div class="cleaner">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="main1 add" ng-show="showAdd" ng-init="newItem={}">
+            <div class="main2">
+
+                <div class="left">
+                    <div class="column-in">
+                        <div class="lock">
+                            <i class="fa fa-unlock-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="column-in">
+                        <button class="pure-button pure-button-small" ng-click="wl.addNewItem(newItem); showAdd=false;">
+                            <i class="fa fa-plus"></i> Add
+                        </button>
+                        <button class="pure-button pure-button-small" ng-click="showAdd=false">
+                            <i class="fa fa-ban"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="middle">
+                    <div class="column-in">
+                        <span>
+                            <input ng-model="newItem.name" placeholder="Title">
+                            <input ng-model="newItem.url" placeholder="Url">
+                            <input type="number" ng-model="newItem.price" placeholder="Price">
+                        </span>
+                        <textarea rows="3" ng-model="newItem.description" placeholder="Description"></textarea><br>
+
+                        <div></div>
+                    </div>
+                </div>
+                <div class="cleaner">&nbsp;</div>
+            </div>
+        </div>
+
+        <button class="add" ng-click="showAdd = !showAdd">
+            <i class="fa" ng-class="{'fa-plus': !showAdd, 'fa-minus': showAdd}"></i>
+        </button>
+
     </div>
 
 </div>
