@@ -47,7 +47,7 @@
                         <a ng-href="{{ item.url }}" target="_blank">{{ item.name }}
                             <i class="fa fa-star" ng-show="isReservedByMe(item)"></i>
                         </a>
-                        <span>{{ item.price }}€</span>
+                        <span ng-show="item.price">{{ item.price }}€</span>
                     </h3>
 
                     <p>{{ item.description }}</p>
@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <button class="add" ng-click="showForm = true" ng-show="wl.ownerId == user.id" ng-hide="showForm">
+    <button class="add" ng-click="showForm = true" ng-show="wl.ownerId == user.id && !showForm">
         <i class="fa fa-plus"></i>
     </button>
 </div>
