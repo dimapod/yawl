@@ -32,7 +32,7 @@ angular.module('yawl', [
                     }
                     $location.url('/login');
                 } else if (newValue == '/login') {
-                    $location.url($rootScope.redirect);
+                    $location.url("/wl-collection");
                 }
             });
 
