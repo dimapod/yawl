@@ -22,6 +22,10 @@ h3 {
     font-size: 1.3em;
 }
 
+a {
+    text-decoration: none;
+}
+
 #login {
     position: absolute;
     top: 0;
@@ -122,65 +126,103 @@ h3 {
         .border(4px);
 
         .wishlists {
+            .column-3-layout(0px, 115px, 0px, 14px);
+
             h2 {
                 margin-bottom: .4em;
             }
 
-            .column-3-layout(0px, 120px, 0px, 44px);
-        }
-
-        .wishes-header {
-            input {
-                margin-bottom: 10px;
-                width: 90%;
-            }
-
-            margin-bottom: 20px;
-        }
-
-        .items {
-            .column-3-layout(60px, 115px, 13px, 11px);
-
-            .left {
-                .lock {
-                    .border(5px);
-                    height: 54px;
-                    width: 54px;
-                    text-align: center;
-                    font-size: 2.4em;
-                    padding-top: 14px;
-                    background-color: #E6E6E6;
-                    margin-left: 4px;
-                }
-            }
-
-            .right {
-                button {
-                    width: 112px;
-                    margin-bottom: 4px;
-                }
-            }
-
-            .middle {
-                padding-bottom: 20px;
-
+            .main1 {
+                margin-top: 6px;
                 h3 {
                     margin: 0;
-                    a {
-                        color: black;
-                        text-transform: uppercase;
-                        text-shadow: 0 2px 0px #fff;
-                        text-decoration: none;
-                    }
+                    padding-top: 0;
+                    color: black;
+
                     span {
                         float: right;
+                        color: #777;
+                        font-size: .5em;
+                        padding-top: 0.6em;
                     }
                 }
                 p {
-                    margin-top: 10px;
-                    min-height: 25px;
+                    margin: .4em 0;
+                    color: #777;
                 }
-                div.sep {
+                .sep {
+                    width: 300px;
+                }
+
+                .right {
+                    button {
+                        width: 112px;
+                        margin-bottom: 4px;
+                    }
+                }
+
+                input {
+                    margin-bottom: 4px;
+                    width: 100%;
+                }
+                textarea {
+                    width: 100%;
+                    max-width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .wishlist {
+            .wishes-header {
+                input {
+                    margin-bottom: 10px;
+                    width: 90%;
+                }
+            }
+
+            .column-3-layout(60px, 115px, 13px, 11px);
+
+            .main1 {
+                margin: 10px 0;
+                .left {
+                    .lock {
+                        .border(5px);
+                        height: 54px;
+                        width: 54px;
+                        text-align: center;
+                        font-size: 2.4em;
+                        padding-top: 14px;
+                        background-color: #E6E6E6;
+                        margin-left: 4px;
+                    }
+                }
+
+                .right {
+                    button {
+                        width: 112px;
+                        margin-bottom: 4px;
+                    }
+                }
+
+                .middle {
+                    h3 {
+                        margin: 0;
+                        a {
+                            color: black;
+                            text-transform: uppercase;
+                            text-shadow: 0 2px 0px #fff;
+                        }
+                        span {
+                            float: right;
+                        }
+                    }
+                    p {
+                        margin: 10px 0;
+                        min-height: 25px;
+                    }
+                }
+                .sep {
                     width: 300px;
                 }
             }
@@ -199,27 +241,35 @@ h3 {
                 }
                 textarea {
                     width: 99%;
+                    max-width: 99%;
                 }
             }
 
-            button {
-                &.add {
-                    width: 100%;
-                    font-size: 3em;
-                    padding: 0;
-                    background-color: transparent;
-                    border: 1px solid transparent;
-
-                    &:hover {
-                        .border(2px);
-                    }
-                    &:focus {
-                        outline: 0;
-                    }
-                }
-            }
         }
     }
+
+    .no_items {
+        h3 {
+            text-align: center;
+        }
+    }
+
+    button.add {
+        margin-top: 5px;
+        width: 100%;
+        font-size: 2em;
+        padding: 0;
+        background-color: transparent;
+        border: 1px solid transparent;
+
+        &:hover {
+            .border(2px);
+        }
+        &:focus {
+            outline: 0;
+        }
+    }
+
 }
 
 // 3 column layout

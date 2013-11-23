@@ -1,51 +1,86 @@
-<div class="wishlists" ng-controller="wlCollectionCtrl as wlCollection" ng-init="showForm = false">
+<div class="wishlists" ng-controller="wlCollectionCtrl as wlCollection">
     <h2>My wishlists</h2>
+
     <div class="sep"></div>
-
-    <ul ng-init="wlCollection.getWishlistCollection()">
-        <li ng-repeat="wl in wlCollection.list">
-            <a href="#/wl/{{ user.id }}/{{ wl.$id }}">{{ wl.name }} - {{ wl.description }} - {{ wl.creationDate | date }}</a>
-            <button ng-click="wlCollection.removeWishlist(wl.$id)">x</button>
-        </li>
-    </ul>
-
-    <div ng-show="showForm" ng-init="wishlist={}">
-        <input ng-model="wishlist.name" placeholder="name" required/> <br>
-        <textarea rows="4" cols="50" ng-model="wishlist.description"></textarea><br>
-        <button ng-click="wlCollection.newWishlist(wishlist)">Add new Wishlist</button>
+    <div class="no_items" ng-hide="wlCollection.list.length">
+        <h3>Add some items...</h3>
+        <div class="sep"></div>
     </div>
 
-    <a class="pure-button" ng-click="showForm = !showForm">WL ADD</a>
-
-<br>
-<br>
-<br>
-<br>
-
-    <div class="main1">
-        <div class="main2">
-            <div class="right">
-                <div class="column-in">
-                    <div class="column-in">
-                        Test left<br>
-                        Test left<br>
-                        Test left
+    <div ng-init="wlCollection.getWishlistCollection()">
+        <div ng-repeat="wl in wlCollection.list">
+            <div class="main1">
+                <div class="main2">
+                    <div class="left">
+                        <div class="column-in">
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="middle">
-                <div class="column-in">
-                    <h3>
-                        Middle
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="right">
+                        <div class="column-in">
+                            <button class="pure-button pure-button-small"
+                                    ng-click="wlCollection.removeWishlist(wl.$id)">
+                                <i class="fa fa-trash-o"></i> Remove
+                            </button>
+                        </div>
+                    </div>
 
+                    <a href="#/wl/{{ user.id }}/{{ wl.$id }}">
+                        <div class="middle">
+                            <div class="column-in">
+                                <h3>
+                                    {{ wl.name }}
+                                    <span>{{ wl.creationDate | date }}</span>
+                                </h3>
+
+                                <p>{{ wl.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="cleaner">&nbsp;</div>
                 </div>
+                <div class="sep"></div>
             </div>
-            <div class="cleaner">&nbsp;</div>
         </div>
     </div>
 
+    <div ng-show="showForm" ng-init="showForm = false; wishlist={}">
+        <div class="main1">
+            <div class="main2">
+                <div class="left">
+                    <div class="column-in">
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="column-in">
+                        <button class="pure-button pure-button-small" ng-click="wlCollection.newWishlist(wishlist); showForm=false">
+                            <i class="fa fa-plus"></i> Add
+                        </button>
+                        <button class="pure-button pure-button-small" ng-click="showForm=false">
+                            <i class="fa fa-ban"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="middle">
+                    <div class="column-in">
+                        <h3>
+                            <input ng-model="wishlist.name" placeholder="Wishlist Name" required/>
+                        </h3>
+                        <textarea rows="3" cols="50" ng-model="wishlist.description" placeholder="Description"></textarea><br>
+                    </div>
+                </div>
+
+                <div class="cleaner">&nbsp;</div>
+            </div>
+            <div class="sep"></div>
+        </div>
+    </div>
+
+    <button class="add" ng-click="showForm = true" ng-hide="showForm">
+        <i class="fa fa-plus"></i>
+    </button>
 
 </div>
