@@ -12,7 +12,7 @@ angular.module('yawl', [
         $routeProvider.when('/wl-collection', {templateUrl: 'partials/wishlist-collection.tpl.html'});
         $routeProvider.when('/wl/:ownerId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html'});
         $routeProvider.when('/about', {templateUrl: 'partials/about.tpl.html'});
-        $routeProvider.otherwise({redirectTo: '/wl-collection'});
+        $routeProvider.otherwise({redirectTo: '/login'});
     }])
     // Firebase URL
     .constant('FBURL', 'https://yawl.firebaseio.com')
@@ -23,12 +23,16 @@ angular.module('yawl', [
             $rootScope.signin = "NA";
             $rootScope.redirect = "/wl-collection";
 
-            $rootScope.$watch(function() { return $location.path(); }, function(newValue, oldValue) {
+            $rootScope.$watch(function () {
+                return $location.path();
+            }, function (newValue, oldValue) {
                 if (!$rootScope.user) {
                     if (oldValue != "/login") {
                         $rootScope.redirect = oldValue;
                     }
                     $location.url('/login');
+                } else if (newValue == '/login') {
+                    $location.url($rootScope.redirect);
                 }
             });
 
