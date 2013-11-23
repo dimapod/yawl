@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yawl.services.wishlist', ['yawl.services.firebaseRefs'])
-    .factory('wishlistCollection', ['angularFireCollection', 'FireRef', function (angularFireCollection, FireRef) {
+    .factory('wishlistCollection', ['FireRef', 'angularFireCollection', function (FireRef, angularFireCollection) {
 
         function collection(cb) {
             var ref = FireRef.wishlists();
@@ -18,7 +18,7 @@ angular.module('yawl.services.wishlist', ['yawl.services.firebaseRefs'])
 
         function create(wishlist) {
             return FireRef.wishlists().push(
-                angular.extend({ creationDate: (new Date()).getTime() }, wishlist)
+                angular.extend({ creationDate: new Date().getTime() }, wishlist)
             ).name();
         }
 

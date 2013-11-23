@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yawl.controllers').
-    controller('loginCtrl', function (loginService, $rootScope) {
+    controller('loginCtrl', ['$rootScope', 'loginService', function ($rootScope, loginService) {
         this.loginWith = function (provider) {
             loginService.login(provider);
         };
@@ -9,4 +9,4 @@ angular.module('yawl.controllers').
         $rootScope.$on("user:logout", function () {
             loginService.logout();
         });
-    });
+    }]);
