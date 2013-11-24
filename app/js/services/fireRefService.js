@@ -1,25 +1,19 @@
 'use strict';
 
 angular.module('yawl.services.firebaseRefs', ['firebase'])
-    .factory('FireRef', ['FBURL', 'Firebase', 'loginService', '$rootScope', function (FBURL, Firebase, loginService, $rootScope) {
-
-        function root() {
-            return new Firebase(FBURL);
-        }
-
-        function wishlists(userId) {
-            userId = userId || $rootScope.user.id;
-            return new Firebase(FBURL + '/users/' + userId + '/wishlists');
-        }
-
-        function items(wishlistId, userId) {
-            return wishlists(userId).child(wishlistId).child("items");
-        }
-
-        // Public
+    .factory('FireRef', ['$rootScope', 'FBURL', 'Firebase', function ($rootScope, FBURL, Firebase) {
         return {
-            root: root,
-            wishlists: wishlists,
-            items: items
+            root: function () {
+                return new Firebase(FBURL);
+            },
+
+            wishlists: function (userId) {
+                userId = userId || $rootScope.user.id;
+                return new Firebase(FBURL + '/users/' + userId + '/wishlists');
+            },
+
+            items: function (wishlistId, userId) {
+                return this.wishlists(userId).child(wishlistId).child("items");
+            }
         }
     }]);

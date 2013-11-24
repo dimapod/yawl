@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('yawl.controllers.login', ['yawl.services.login']).
-    controller('loginCtrl', ['$rootScope', 'loginService', function ($rootScope, loginService) {
+angular.module('yawl.controllers.login', []).
+    controller('loginCtrl', ['$rootScope', 'angularFireAuth', '$location', function ($rootScope, angularFireAuth, $location) {
         this.loginWith = function (provider) {
-            loginService.login(provider);
+            angularFireAuth.login(provider);
         };
 
         $rootScope.$on("user:logout", function () {
-            loginService.logout('/login');
+            angularFireAuth.logout();
+            $location.path('/login');
         });
     }]);
