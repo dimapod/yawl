@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet/less" type="text/css" href="css/style.less"/>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
     <script src="//cdn.firebase.com/v0/firebase.js"></script>
     <script src="//cdn.firebase.com/v0/firebase-simple-login.js"></script>
     <script src="//cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<div class="content">
+<div class="content" ng-cloak>
     <div class="ng-hide" id="header" ng-show="user" ng-controller="headerCtrl as header">
         <div class="pure-menu pure-menu-open pure-menu-horizontal">
             <a class="pure-menu-heading" href=""><b>YAWL</b></a>
