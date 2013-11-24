@@ -16,4 +16,7 @@ angular.module('yawl.controllers.login', ['yawl.services.login']).
         $scope.$on("angularFireAuth:logout", function(evt) {
             self.signin = "LOGOUT";
         });
+        $scope.$on("angularFireAuth:error", function(evt) {
+            self.signin = "LOGIN_ERR";
+        });
     }]);
