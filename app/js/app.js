@@ -25,6 +25,7 @@ angular.module('yawl', [
     // authentication
     .run(['angularFireAuth', 'FBURL', '$rootScope', 'FireRef',
         function (angularFireAuth, FBURL, $rootScope, FireRef) {
+            $rootScope.signin = "NA";
 
             $rootScope.$on("$routeChangeStart", function (e, next) {
                 if (next.originalPath == '/login' && !angularFireAuth._redirectTo) {
@@ -32,5 +33,9 @@ angular.module('yawl', [
                 }
             });
 
-            angularFireAuth.initialize(FireRef.root(), { scope: $rootScope, name: 'user', path: '/login' });
+            angularFireAuth.initialize(FireRef.root(), { scope: $rootScope, name: 'user', path: '/login',
+                callback: function () {
+                    $rootScope.signin = "DONE";
+                }
+            });
         }]);

@@ -2,7 +2,7 @@
     <div class="login-content">
         <h2>SIGN IN</h2>
         <div ng-controller="loginCtrl as login" >
-            <div ng-hide="login.signin == 'NA'">
+            <div ng-hide="signin == 'NA'">
                 <div>
                     <button class="pure-button" ng-click="login.loginWith('twitter')">
                         <i class="fa fa-twitter fa-fw"></i> Login with Twitter
@@ -15,7 +15,7 @@
                     </button>
                 </div>
             </div>
-            <div ng-show="login.signin == 'NA'">
+            <div ng-show="signin == 'NA'">
                 <img src="img/loading.gif">
             </div>
         </div>
