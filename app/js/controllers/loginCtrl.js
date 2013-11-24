@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yawl.controllers').
+angular.module('yawl.controllers.login', ['yawl.services.login']).
     controller('loginCtrl', ['$rootScope', 'loginService', function ($rootScope, loginService) {
         this.loginWith = function (provider) {
             loginService.login(provider);

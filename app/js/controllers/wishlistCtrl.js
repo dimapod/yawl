@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yawl.controllers').
+angular.module('yawl.controllers.wishlist', []).
     controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection', 'items',
         function ($scope, $routeParams, $location, angularFire, wishlistCollection, items) {
             $scope.wishlist = {};

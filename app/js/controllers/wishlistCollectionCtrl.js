@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yawl.controllers').
+angular.module('yawl.controllers.wlCollection', []).
     controller('wlCollectionCtrl', ['$scope', 'wishlistCollection', function ($scope, wishlistCollection) {
 
         this.getWishlistCollection = function () {

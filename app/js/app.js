@@ -3,8 +3,13 @@
 angular.module('yawl', [
         'ngRoute',
         'firebase',
-        'yawl.controllers',
+        'yawl.controllers.header',
+        'yawl.controllers.login',
+        'yawl.controllers.wlCollection',
+        'yawl.controllers.wishlist',
         'yawl.services.firebaseRefs',
+        'yawl.services.wishlist',
+        'yawl.services.items',
         'yawl.services.login'
     ]).
     config(['$routeProvider', function ($routeProvider) {
