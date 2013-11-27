@@ -16,10 +16,10 @@ angular.module('yawl', [
 // Routes
 angular.module('yawl').config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/login', {templateUrl: 'partials/login.tpl.html'});
-    $routeProvider.when('/wl-collection', {templateUrl: 'partials/wishlist-collection.tpl.html', authRequired: true});
+    $routeProvider.when('/', {templateUrl: 'partials/wishlist-collection.tpl.html', authRequired: true});
     $routeProvider.when('/wl/:ownerId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html', authRequired: true});
     $routeProvider.when('/about', {templateUrl: 'partials/about.tpl.html', authRequired: true});
-    $routeProvider.otherwise({redirectTo: '/wl-collection'});
+    $routeProvider.otherwise({redirectTo: '/'});
 }])
 
 // Firebase URL
@@ -32,7 +32,7 @@ angular.module('yawl').run(['$rootScope', 'angularFireAuth', 'FireRef',
 
         $rootScope.$on("$routeChangeStart", function (e, next) {
             if (next.originalPath == '/login' && !angularFireAuth._redirectTo) {
-                angularFireAuth._redirectTo = "/wl-collection";
+                angularFireAuth._redirectTo = "/";
             }
         });
 
