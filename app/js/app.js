@@ -16,7 +16,7 @@ angular.module('yawl', [
 // Routes
 angular.module('yawl').config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/login', {templateUrl: 'partials/login.tpl.html'});
-    $routeProvider.when('/', {templateUrl: 'partials/wishlist-collection.tpl.html', authRequired: true});
+    $routeProvider.when('/', {templateUrl: 'partials/wishlists.tpl.html', authRequired: true});
     $routeProvider.when('/wl/:ownerId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html', authRequired: true});
     $routeProvider.when('/about', {templateUrl: 'partials/about.tpl.html', authRequired: true});
     $routeProvider.otherwise({redirectTo: '/'});
