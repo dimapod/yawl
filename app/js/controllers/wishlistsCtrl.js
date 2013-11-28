@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('yawl.controllers.wlCollection', []).
-    controller('wlCollectionCtrl', ['$scope', 'wishlistCollection', function ($scope, wishlistCollection) {
+angular.module('yawl.controllers.wishlists', []).
+    controller('wishlistsCtrl', ['$scope', 'wishlistCollection', function ($scope, wishlistCollection) {
 
         this.getWishlistCollection = function () {
             this.list = wishlistCollection.collection();
@@ -13,13 +13,10 @@ angular.module('yawl.controllers.wlCollection', []).
         });
 
         this.removeWishlist = function (wishlistId) {
-            this.list.remove(wishlistId);
-
-            // The same
-            //wishlistCollection.remove(wishlistId);
+            wishlistCollection.remove(wishlistId);
         };
 
-        this.newWishlist = function (wishlist) {
+        this.createWishlist = function (wishlist) {
             wishlistCollection.create(wishlist);
         };
     }]);

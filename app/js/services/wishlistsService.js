@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yawl.services.wishlist', ['yawl.services.firebaseRefs'])
+angular.module('yawl.services.wishlists', ['yawl.services.firebaseRefs'])
     .factory('wishlistCollection', ['FireRef', 'angularFireCollection', function (FireRef, angularFireCollection) {
         return {
             collection: function (cb) {

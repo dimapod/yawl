@@ -6,10 +6,10 @@ angular.module('yawl', [
     'firebase',
     'yawl.controllers.header',
     'yawl.controllers.login',
-    'yawl.controllers.wlCollection',
+    'yawl.controllers.wishlists',
     'yawl.controllers.wishlist',
     'yawl.services.firebaseRefs',
-    'yawl.services.wishlist',
+    'yawl.services.wishlists',
     'yawl.services.items'
 ]);
 

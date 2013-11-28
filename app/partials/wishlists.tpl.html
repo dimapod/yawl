@@ -1,14 +1,14 @@
-<div class="wishlists" ng-controller="wlCollectionCtrl as wlCollection">
+<div class="wishlists" ng-controller="wishlistsCtrl as wishlists">
     <h2>My wishlists</h2>
 
     <div class="sep"></div>
-    <div class="no_items" ng-hide="wlCollection.list.length">
+    <div class="no_items" ng-hide="wishlists.list.length">
         <h3>No items...</h3>
         <div class="sep"></div>
     </div>
 
-    <div ng-init="wlCollection.getWishlistCollection()">
-        <div ng-repeat="wl in wlCollection.list">
+    <div ng-init="wishlists.getWishlistCollection()">
+        <div ng-repeat="wl in wishlists.list">
             <div class="main1">
                 <div class="main2">
                     <div class="left">
@@ -19,7 +19,7 @@
                     <div class="right">
                         <div class="column-in">
                             <button class="pure-button pure-button-small"
-                                    ng-click="wlCollection.removeWishlist(wl.$id)">
+                                    ng-click="wishlists.removeWishlist(wl.$id)">
                                 <i class="fa fa-trash-o"></i> Remove
                             </button>
                         </div>
@@ -53,7 +53,7 @@
 
                 <div class="right">
                     <div class="column-in">
-                        <button class="pure-button pure-button-small" ng-click="wlCollection.newWishlist(wishlist); showForm=false">
+                        <button class="pure-button pure-button-small" ng-click="wishlists.createWishlist(wishlist); showForm=false">
                             <i class="fa fa-plus"></i> Add
                         </button>
                         <button class="pure-button pure-button-small" ng-click="showForm=false">
