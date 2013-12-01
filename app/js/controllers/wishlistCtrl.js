@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('yawl.controllers.wishlist', []).
-    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection', 'items',
-        function ($scope, $routeParams, $location, angularFire, wishlistCollection, items) {
+    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection',
+        function ($scope, $routeParams, $location, angularFire, wishlistCollection) {
             $scope.wishlist = {};
             $scope.$locationUrl = $location.absUrl();
 
@@ -12,27 +12,20 @@ angular.module('yawl.controllers.wishlist', []).
             angularFire(wishlistCollection.find($scope.ownerId, wishlistId), $scope, 'wishlist');
 
             $scope.addNewItem = function (item) {
-                //$scope.wishlist.items[new Date().getTime()] = angular.extend({reserved: ""}, item);
-
-                // Or
-                items.create(wishlistId, item);
+                if (!$scope.wishlist.items) $scope.wishlist.items = {};
+                $scope.wishlist.items[new Date().getTime()] = angular.extend({reserved: ""}, item);
             };
 
             $scope.removeItem = function (itemId) {
                 delete $scope.wishlist.items[itemId];
-
-                // Or
-                //items.remove(wishlistId, itemId);
             };
 
             $scope.reserveItem = function (itemId) {
-                var itemToReserve = items.find($scope.ownerId, wishlistId, itemId).child("reserved");
-                itemToReserve.set($scope.user.id);
+                $scope.wishlist.items[itemId].reserved = $scope.user.id;
             };
 
             $scope.releaseItem = function (itemId) {
-                var itemToReserve = items.find($scope.ownerId, wishlistId, itemId).child("reserved");
-                itemToReserve.set("");
+                $scope.wishlist.items[itemId].reserved = "";
             };
 
             $scope.isReservedByMe = function (item) {

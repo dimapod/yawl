@@ -9,8 +9,7 @@ angular.module('yawl', [
     'yawl.controllers.wishlists',
     'yawl.controllers.wishlist',
     'yawl.services.firebaseRefs',
-    'yawl.services.wishlists',
-    'yawl.services.items'
+    'yawl.services.wishlists'
 ]);
 
 // Routes
