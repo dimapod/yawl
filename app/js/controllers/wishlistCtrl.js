@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('yawl.controllers.wishlist', []).
-    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection',
-        function ($scope, $routeParams, $location, angularFire, wishlistCollection) {
+    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection', 'FireRef',
+        function ($scope, $routeParams, $location, angularFire, wishlistCollection, FireRef) {
             $scope.wishlist = {};
             $scope.$locationUrl = $location.absUrl();
 
@@ -22,10 +22,16 @@ angular.module('yawl.controllers.wishlist', []).
 
             $scope.reserveItem = function (itemId) {
                 $scope.wishlist.items[itemId].reserved = $scope.user.id;
+
+//                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
+//                itemToReserve.set($scope.user.id);
             };
 
             $scope.releaseItem = function (itemId) {
                 $scope.wishlist.items[itemId].reserved = "";
+
+//                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
+//                itemToReserve.set("");
             };
 
             $scope.isReservedByMe = function (item) {
