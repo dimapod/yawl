@@ -1,4 +1,4 @@
-<div class="wishlist" ng-controller="wishlistCtrl as wl" xmlns="http://www.w3.org/1999/html">
+<div class="wishlist" ng-controller="wishlistCtrl as wl">
     <div class="wishes-header">
         <h2>{{ wl.wishlist.name }}</h2>
 
@@ -87,9 +87,7 @@
                             <input ng-model="newItem.url" placeholder="Url">
                             <input type="number" ng-model="newItem.price" placeholder="Price">
                         </span>
-                    <textarea rows="3" ng-model="newItem.description" placeholder="Description"></textarea><br>
-
-                    <div></div>
+                    <textarea rows="3" ng-model="newItem.description" placeholder="Description"></textarea>
                 </div>
             </div>
         </div>

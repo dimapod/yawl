@@ -21,15 +21,11 @@ angular.module('yawl.controllers.wishlist', []).
             };
 
             $scope.reserveItem = function (itemId) {
-//                $scope.wishlist.items[itemId].reserved = $scope.user.id;
-
                 var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
                 itemToReserve.set($scope.user.id);
             };
 
             $scope.releaseItem = function (itemId) {
-//                $scope.wishlist.items[itemId].reserved = "";
-
                 var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
                 itemToReserve.set("");
             };
