@@ -22,15 +22,5 @@ angular.module('yawl').constant('FBURL', 'https://[firebase name].firebaseio.com
 // Authentication
 angular.module('yawl').run(['$rootScope', 'FireRef',
     function ($rootScope, FireRef) {
-        $rootScope.signin = "NA";
-
-        /*
-        $rootScope.$on("$routeChangeStart", function (e, next) {
-            if (next.originalPath == '/login' && !angularFireAuth._redirectTo) {
-                angularFireAuth._redirectTo = "/";
-            }
-        });
-        */
-
         // -- initialise angularFireAuth here --
     }]);
