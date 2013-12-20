@@ -1,25 +1,22 @@
 'use strict';
 
 angular.module('yawl.services.wishlists', ['yawl.services.firebaseRefs'])
-    .factory('wishlistCollection', ['FireRef', 'angularFireCollection', function (FireRef, angularFireCollection) {
+    .factory('wishlistCollection', ['FireRef', function (FireRef) {
         return {
-            collection: function (cb) {
-                return angularFireCollection(FireRef.wishlists(), cb);
+            collection: function () {
+                return FireRef.wishlists();
             },
 
             find: function (userId, wishlistId) {
-                return FireRef.wishlists(userId).child('/' + wishlistId);
+                return FireRef.wishlists(userId).$child('/' + wishlistId);
             },
 
             create: function (wishlist) {
-                return FireRef.wishlists().push(
-                    angular.extend({ creationDate: new Date().getTime() }, wishlist)
-                ).name();
+                FireRef.wishlists().$add(angular.extend({ creationDate: new Date().getTime() }, wishlist));
             },
 
             remove: function (wishlistId) {
-                var wishlist = FireRef.wishlists().child('/' + wishlistId);
-                wishlist.remove();
+                FireRef.wishlists().$remove(wishlistId);
             }
         }
     }]);

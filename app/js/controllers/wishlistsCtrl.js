@@ -8,7 +8,7 @@ angular.module('yawl.controllers.wishlists', []).
         };
 
         var self = this;
-        $scope.$on('angularFireAuth:login', function () {
+        $scope.$on('$firebaseAuth:login', function () {
             self.getWishlistCollection();
         });
 

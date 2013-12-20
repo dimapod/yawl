@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('yawl.controllers.wishlist', []).
-    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'angularFire', 'wishlistCollection', 'FireRef',
-        function ($scope, $routeParams, $location, angularFire, wishlistCollection, FireRef) {
+    controller('wishlistCtrl', ['$scope', '$routeParams', '$location', 'wishlistCollection', 'FireRef', '$firebase',
+        function ($scope, $routeParams, $location, wishlistCollection, FireRef, $firebase) {
             $scope.wishlist = {};
             $scope.$locationUrl = $location.absUrl();
 
             $scope.ownerId = $routeParams["ownerId"];
             var wishlistId = $routeParams["wishlistId"];
 
-            angularFire(wishlistCollection.find($scope.ownerId, wishlistId), $scope, 'wishlist');
+            var wishlist = wishlistCollection.find($scope.ownerId, wishlistId);
+            wishlist.$bind($scope, 'wishlist');
 
             $scope.addNewItem = function (item) {
                 if (!$scope.wishlist.items) $scope.wishlist.items = {};
@@ -21,17 +22,17 @@ angular.module('yawl.controllers.wishlist', []).
             };
 
             $scope.reserveItem = function (itemId) {
-                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
-                itemToReserve.set($scope.user.id);
+                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).$child(itemId).$child("reserved");
+                itemToReserve.$set($scope.auth.user.id);
             };
 
             $scope.releaseItem = function (itemId) {
-                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).child(itemId).child("reserved");
-                itemToReserve.set("");
+                var itemToReserve = FireRef.items(wishlistId, $scope.ownerId).$child(itemId).$child("reserved");
+                itemToReserve.$set("");
             };
 
             $scope.isReservedByMe = function (item) {
-                return $scope.user && item.reserved == $scope.user.id;
+                return $scope.auth.user && item.reserved == $scope.auth.user.id;
             };
 
             return $scope;
