@@ -13,7 +13,9 @@ angular.module('yawl', [
 
 // Routes
 angular.module('yawl').config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/', {templateUrl: 'partials/wishlists.tpl.html', authRequired: true}); 
     $routeProvider.when('/about', {templateUrl: 'partials/about.tpl.html', authRequired: true});
+    $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
 // Firebase URL
