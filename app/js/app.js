@@ -25,15 +25,22 @@ angular.module('yawl').config(['$routeProvider', function ($routeProvider) {
 angular.module('yawl').constant('FBURL', 'https://yawl.firebaseio.com')
 
 // Authentication
-angular.module('yawl').run(['$rootScope', '$firebaseAuth', 'FireRef',
-    function ($rootScope, $firebaseAuth, FireRef) {
+angular.module('yawl').run(['$rootScope', '$firebaseAuth', 'FireRef', '$location',
+    function ($rootScope, $firebaseAuth, FireRef, $location) {
         $rootScope.signin = "NA";
 
-//        $rootScope.$on("$routeChangeStart", function (e, next) {
-//            if (next.originalPath == '/login' && !$rootScope.auth._redirectTo) {
-//                $rootScope.auth._redirectTo = "/";
-//            }
-//        });
+        // Tweak: Manage the case when user go directly to "/login" and has to be redirected to "/" after sign-in
+        var redirect;
+        $rootScope.$on("$routeChangeStart", function (e, next) {
+            if (!redirect) redirect = next.originalPath;
+        });
+        $rootScope.$on('$firebaseAuth:login', function () {
+            if (redirect == "/login") {
+                $location.replace();
+                $location.path("/");
+                redirect = undefined;
+            }
+        });
 
         $rootScope.auth = $firebaseAuth(FireRef.root(), { path: '/login',
             callback: function () {
