@@ -19,17 +19,17 @@ angular.module('yawl').config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/wl/:ownerId/:wishlistId', {templateUrl: 'partials/wishlist.tpl.html', authRequired: true});
     $routeProvider.when('/about', {templateUrl: 'partials/about.tpl.html', authRequired: true});
     $routeProvider.otherwise({redirectTo: '/'});
-}])
+}]);
 
 // Firebase URL
-angular.module('yawl').constant('FBURL', 'https://yawl.firebaseio.com')
+angular.module('yawl').constant('FBURL', 'https://yawl.firebaseio.com');
 
 // Authentication
 angular.module('yawl').run(['$rootScope', '$firebaseAuth', 'FireRef', '$location',
     function ($rootScope, $firebaseAuth, FireRef, $location) {
         $rootScope.signin = "NA";
 
-        // Tweak: Manage the case when user go directly to "/login" and has to be redirected to "/" after sign-in
+        // Tweak: Manage the case when user goes directly to "/login" and has to be redirected to "/" after sign-in
         var redirect;
         $rootScope.$on("$routeChangeStart", function (e, next) {
             if (!redirect) redirect = next.originalPath;
