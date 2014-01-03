@@ -8,7 +8,7 @@
     </div>
 
     <div ng-init="wishlists.getWishlistCollection()">
-        <div ng-repeat="wl in wishlists.list">
+        <div ng-repeat="(wishlistId, wl) in wishlists.list">
             <div class="main1">
                 <div class="main2">
                     <div class="left">
@@ -19,13 +19,13 @@
                     <div class="right">
                         <div class="column-in">
                             <button class="pure-button pure-button-small"
-                                    ng-click="wishlists.removeWishlist(wl.$id)">
+                                    ng-click="wishlists.removeWishlist(wishlistId)">
                                 <i class="fa fa-trash-o"></i> Remove
                             </button>
                         </div>
                     </div>
 
-                    <a href="#/wl/{{ user.id }}/{{ wl.$id }}">
+                    <a href="#/wl/{{ auth.user.id }}/{{ wishlistId }}">
                         <div class="middle">
                             <div class="column-in">
                                 <h3>

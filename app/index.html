@@ -15,7 +15,7 @@
 <body>
 
 <div class="content" ng-cloak>
-    <div class="ng-hide" id="header" ng-show="user" ng-controller="headerCtrl as header">
+    <div class="ng-hide" id="header" ng-show="auth.user" ng-controller="headerCtrl as header">
         <div class="pure-menu pure-menu-open pure-menu-horizontal">
             <a class="pure-menu-heading" href=""><b>YAWL</b></a>
 
@@ -26,9 +26,9 @@
 
             <ul class="profile">
                 <li class="pure-menu-open">
-                    <a href="#"><span><i class="fa fa-user fa-border"></i> {{ user.displayName }}</span></a>
+                    <a href="#"><span><i class="fa fa-user fa-border"></i> {{ auth.user.displayName }}</span></a>
                     <ul class="pure-menu-children">
-                        <li class="pure-menu-heading">Provider: {{ user.provider }}</li>
+                        <li class="pure-menu-heading">Provider: {{ auth.user.provider }}</li>
                         <li class="pure-menu-separator"></li>
                         <li><a href="" ng-click="header.logout()">Logout</a></li>
                     </ul>
@@ -39,7 +39,7 @@
 
     <div id="content" ng-view></div>
 
-    <div id="footer" ng-show="user">
+    <div id="footer" ng-show="auth.user">
         © 2013 YAWL All Rights Reserved
     </div>
 </div>

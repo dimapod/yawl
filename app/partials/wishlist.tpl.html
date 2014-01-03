@@ -33,7 +33,7 @@
                         <i class="fa fa-unlock"></i> Release
                     </button>
                     <button class="pure-button pure-button-small" ng-click="wl.removeItem(itemId)"
-                            ng-show="wl.ownerId == user.id">
+                            ng-show="wl.ownerId == auth.user.id">
                         <i class="fa fa-trash-o"></i> Remove
                     </button>
                 </div>
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <button class="add" ng-click="showForm = true" ng-show="wl.ownerId == user.id && !showForm">
+    <button class="add" ng-click="showForm = true" ng-show="wl.ownerId == auth.user.id && !showForm">
         <i class="fa fa-plus"></i>
     </button>
 </div>
