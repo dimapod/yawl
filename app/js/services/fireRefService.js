@@ -3,10 +3,6 @@
 angular.module('yawl.services.firebaseRefs', ['firebase'])
     .factory('FireRef', ['$rootScope', 'FBURL', 'Firebase', '$firebase', function ($rootScope, FBURL, Firebase, $firebase) {
         return {
-            root: function () {
-                return new Firebase(FBURL);
-            },
-
             wishlists: function (userId) {
                 userId = userId || $rootScope.auth.user.id;
                 return $firebase(new Firebase(FBURL + '/users/' + userId + '/wishlists'));
